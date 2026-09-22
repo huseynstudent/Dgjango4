@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Statistika{% endblock %}
+
+{% block content %}
+  {# [EV 8] tapşırıq 4 — say view-da yox, template-də |length ilə #}
+  <h1>Statistika</h1>
+  <ul class="list">
+    <li>Post sayı: <b>{{ posts|length }}</b></li>
+    <li>Kateqoriya sayı: <b>{{ categories|length }}</b></li>
+  </ul>
+{% endblock %}

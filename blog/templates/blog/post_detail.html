@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+  {# [DƏRS 8] #}
+  <article class="post">
+    <p class="meta">
+      <a href="{% url 'blog:category_detail' post.category %}" class="badge">{{ post.category }}</a>
+      {{ post.created_at|date:"d F Y" }} ·
+      {# [EV 8] tapşırıq 5 — dərsdə sadəcə @{{ post.author }} idi, evdə link oldu #}
+      <a href="{% url 'blog:author_posts' post.author %}">@{{ post.author }}</a>
+      {# [EV 8] bonus 2 — söz sayı #}
+      · {{ post.content|wordcount }} söz
+    </p>
+    <h1>{{ post.title }}</h1>
+    {{ post.content|linebreaks }}
+  </article>
+
+  <p><a href="{% url 'blog:post_list' %}">← Bütün postlar</a></p>
+{% endblock %}
