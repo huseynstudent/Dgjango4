@@ -6,8 +6,9 @@
   {# [DƏRS 8] #}
   <article class="post">
     <p class="meta">
-      <a href="{% url 'blog:category_detail' post.category %}" class="badge">{{ post.category }}</a>
-      {{ post.created_at|date:"d F Y" }} ·
+      <a href="{% url 'blog:category_detail' post.category.slug %}" class="badge">{{ post.category }}</a>
+      {{ post.created_at|date:"d F Y" }} · {{ post.views }} baxış
+      {% if post.is_featured %} · ★ Seçilmiş{% endif %} ·
       {# [EV 8] tapşırıq 5 — dərsdə sadəcə @{{ post.author }} idi, evdə link oldu #}
       <a href="{% url 'blog:author_posts' post.author %}">@{{ post.author }}</a>
       {# [EV 8] bonus 2 — söz sayı #}

@@ -3,10 +3,17 @@
 {% block title %}Statistika{% endblock %}
 
 {% block content %}
-  {# [EV 8] tapşırıq 4 — say view-da yox, template-də |length ilə #}
   <h1>Statistika</h1>
   <ul class="list">
-    <li>Post sayı: <b>{{ posts|length }}</b></li>
-    <li>Kateqoriya sayı: <b>{{ categories|length }}</b></li>
+    <li>Post sayı: <b>{{ posts }}</b></li>
+    <li>Kateqoriya sayı: <b>{{ categories }}</b></li>
+    <li>Ən çox oxunan:
+      {% if top_post %}
+        <b><a href="{% url 'blog:post_detail' top_post.id %}">{{ top_post.title }}</a></b>
+        — {{ top_post.views }} baxış
+      {% else %}
+        <b>Hələ post yoxdur.</b>
+      {% endif %}
+    </li>
   </ul>
 {% endblock %}

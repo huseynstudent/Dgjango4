@@ -2,8 +2,9 @@
 {# Bu faylı {% include %} edən template-də "post" dəyişəni olmalıdır #}
 <article class="card">
   <p class="meta">
-    <a href="{% url 'blog:category_detail' post.category %}" class="badge">{{ post.category }}</a>
+    <a href="{% url 'blog:category_detail' post.category.slug %}" class="badge">{{ post.category }}</a>
     {{ post.created_at|date:"d.m.Y" }}
+    {% if post.is_featured %} · ★ Seçilmiş{% endif %}
   </p>
   <h2><a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a></h2>
   <p>{{ post.content|truncatewords:12 }}</p>
